@@ -5,6 +5,7 @@ const UsersList = (props) => {
     <Flex
       bg={"white"}
       boxShadow={"0 2px 8px rgba(0,0,0,0.26)"}
+      borderRadius="10px"
       m={"2rem auto"}
       p={"1rem"}
       w="90%"
@@ -13,9 +14,10 @@ const UsersList = (props) => {
       <UnorderedList listStyleType={"none"} p={"1rem"}>
         {props.users.map((user) => (
           <ListItem
+            fontWeight={"bold"}
             border={"1px solid #ccc"}
-            margin={"0.5 rem 0"}
-            p={"0.5rem"}
+            margin="0.5rem 0"
+            p="0.5rem"
             key={user.id}
           >
             {user.name} ({user.age} years old)
