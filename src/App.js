@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { Flex } from "@chakra-ui/react";
 
-function App() {
+import React, { useState } from "react";
+
+import AddUser from "./components/AddUser";
+import UsersList from "./components/UserList";
+
+const App = () => {
+  const [usersList, setUsersList] = useState([]);
+
+  const addUserHandler = (uName, uAge) => {
+    setUsersList((prevUsersList) => {
+      return [
+        ...prevUsersList,
+        { name: uName, age: uAge, id: Math.random().toString() },
+      ];
+    });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Flex
+      as="main"
+      direction="column"
+      minH="100vh"
+      py="6"
+      px="6"
+      bgColor="#1f1f1f"
+    >
+      <AddUser onAddUser={addUserHandler} />
+      <UsersList users={usersList} />
+    </Flex>
   );
-}
+};
 
 export default App;
